@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useProgress } from '@/hooks/useProgress';
-import { Code2, Home, Play } from 'lucide-react';
+import { Code2, Home, Play, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
   const location = useLocation();
@@ -12,40 +13,40 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl text-foreground">
-          <Code2 className="w-6 h-6 text-accent" />
-          <span className="font-mono">CodePilot</span>
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+            <Code2 className="w-5 h-5 text-primary-foreground" />
+          </div>
+          <span className="font-extrabold text-xl text-foreground tracking-tight">
+            Code<span className="gradient-text">Pilot</span>
+          </span>
         </Link>
-        <div className="flex items-center gap-6">
-          <Link
-            to="/"
-            className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
-              location.pathname === '/' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-            }`}
+        <div className="flex items-center gap-2">
+          <Button
+            asChild variant={location.pathname === '/' ? 'default' : 'ghost'}
+            size="sm" className="rounded-full gap-1.5 text-sm"
           >
-            <Home className="w-4 h-4" /> Home
-          </Link>
-          <Link
-            to="/playground"
-            className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
-              location.pathname === '/playground' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-            }`}
+            <Link to="/"><Home className="w-3.5 h-3.5" /> Home</Link>
+          </Button>
+          <Button
+            asChild variant={location.pathname === '/playground' ? 'default' : 'ghost'}
+            size="sm" className="rounded-full gap-1.5 text-sm"
           >
-            <Play className="w-4 h-4" /> Playground
-          </Link>
-          <div className="flex items-center gap-2" title={`${progress}% explored`}>
-            <svg width="32" height="32" className="-rotate-90">
-              <circle cx="16" cy="16" r="12" fill="none" stroke="hsl(var(--muted))" strokeWidth="3" />
+            <Link to="/playground"><Play className="w-3.5 h-3.5" /> Playground</Link>
+          </Button>
+          <div className="ml-2 flex items-center gap-1.5 bg-secondary rounded-full px-3 py-1.5" title={`${progress}% explored`}>
+            <svg width="24" height="24" className="-rotate-90">
+              <circle cx="12" cy="12" r="9" fill="none" stroke="hsl(var(--muted))" strokeWidth="2.5" />
               <circle
-                cx="16" cy="16" r="12" fill="none"
-                stroke="hsl(var(--accent))" strokeWidth="3"
-                strokeDasharray={circumference}
-                strokeDashoffset={offset}
+                cx="12" cy="12" r="9" fill="none"
+                stroke="hsl(var(--primary))" strokeWidth="2.5"
+                strokeDasharray={2 * Math.PI * 9}
+                strokeDashoffset={2 * Math.PI * 9 - (progress / 100) * 2 * Math.PI * 9}
                 strokeLinecap="round"
                 className="transition-all duration-500"
               />
             </svg>
-            <span className="text-xs font-mono text-muted-foreground">{progress}%</span>
+            <span className="text-xs font-bold font-mono text-foreground">{progress}%</span>
           </div>
         </div>
       </div>
