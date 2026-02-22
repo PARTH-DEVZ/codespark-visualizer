@@ -10,6 +10,7 @@ import { Progress } from '@/components/ui/progress';
 import Navbar from '@/components/Navbar';
 import { useProgress, DSType, OPERATIONS, ALL_DS, DS_LABELS } from '@/hooks/useProgress';
 import { BSTNode, LLNode, GraphData, genId, bstInsert, bstSearch, bstInorder, bstPreorder, bstPostorder, graphBFS, graphDFS, buildDefaultBST, buildDefaultGraph } from '@/lib/dsOperations';
+import { DS_COMPLEXITY } from '@/lib/algorithms';
 import ArrayVisualizer from '@/components/playground/ArrayVisualizer';
 import StackVisualizer from '@/components/playground/StackVisualizer';
 import QueueVisualizer from '@/components/playground/QueueVisualizer';
@@ -394,6 +395,32 @@ export default function Playground() {
                 <Progress value={progress.percent} className="h-2" />
                 <div className="text-xs text-muted-foreground mt-1">
                   {progress.done}/{progress.total} operations explored
+                </div>
+              </div>
+
+              {/* Complexity Table */}
+              <div className="glass-card p-4">
+                <h3 className="text-sm font-semibold text-foreground mb-3">Time & Space Complexity</h3>
+                <div className="space-y-1.5">
+                  {OPERATIONS[selectedDS].map(op => {
+                    const c = DS_COMPLEXITY[DS_LABELS[selectedDS]]?.[op];
+                    return c ? (
+                      <div key={op} className="flex items-center justify-between text-xs">
+                        <span className="text-muted-foreground">{op}</span>
+                        <div className="flex gap-3">
+                          <span className="font-mono font-semibold text-primary">{c.time}</span>
+                          <span className="font-mono text-muted-foreground">{c.space}</span>
+                        </div>
+                      </div>
+                    ) : null;
+                  })}
+                  <div className="flex items-center justify-between text-[10px] text-muted-foreground/70 border-t border-border/50 pt-1 mt-1">
+                    <span></span>
+                    <div className="flex gap-3">
+                      <span>Time</span>
+                      <span>Space</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
