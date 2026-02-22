@@ -55,10 +55,9 @@ const features = [
   {
     icon: Eye,
     title: 'Algorithm Visualizer',
-    description: 'Coming soon — visualize sorting algorithms (Bubble, Merge, Quick) and searching algorithms with detailed step breakdowns.',
-    highlights: ['Sorting algorithms', 'Search algorithms', 'Complexity analysis'],
+    description: 'Visualize sorting (Bubble, Insertion, Merge, Quick), searching (Linear, Binary), and graph algorithms (BFS, DFS) with step-by-step animations.',
+    highlights: ['8 algorithms', 'Pseudocode sync', 'Complexity analysis'],
     gradient: 'from-accent/10 to-accent/5',
-    comingSoon: true,
   },
   {
     icon: BarChart3,
@@ -123,7 +122,7 @@ export default function Index() {
                   <Link to="/playground"><Rocket className="w-4 h-4" /> Open Playground</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-full px-8 gap-2 text-base border-2 hover:bg-secondary">
-                  <Link to="/"><Eye className="w-4 h-4" /> Visualizer (Soon)</Link>
+                  <Link to="/visualizer"><Eye className="w-4 h-4" /> Algorithm Visualizer</Link>
                 </Button>
               </div>
               <div className="flex items-center gap-6 mt-8 justify-center lg:justify-start text-sm text-muted-foreground">
@@ -223,7 +222,7 @@ export default function Index() {
                 transition={{ delay: i * 0.12, duration: 0.5 }}
                 whileHover={{ y: -6 }}
               >
-                {f.comingSoon && (
+                {(f as any).comingSoon && (
                   <span className="absolute top-4 right-4 text-[10px] font-bold uppercase bg-accent/15 text-accent px-2.5 py-1 rounded-full tracking-wider">
                     Soon
                   </span>
@@ -260,8 +259,8 @@ export default function Index() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <AnimatedCounter target={6} label="Data Structures" icon={Layers} />
             <AnimatedCounter target={22} suffix="+" label="Operations" icon={Cpu} />
-            <AnimatedCounter target={3} label="Tree Traversals" icon={GitBranch} />
-            <AnimatedCounter target={2} label="Graph Algorithms" icon={Share2} />
+            <AnimatedCounter target={8} label="Algorithms" icon={GitBranch} />
+            <AnimatedCounter target={3} label="Pages" icon={Share2} />
           </div>
         </div>
       </section>
