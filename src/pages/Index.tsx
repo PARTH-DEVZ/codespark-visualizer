@@ -98,11 +98,30 @@ export default function Index() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-28 px-6 relative overflow-hidden">
+      <section className="pt-36 pb-32 px-6 relative overflow-hidden">
+        {/* Animated background layers */}
         <div className="absolute inset-0 gradient-warm opacity-60" />
-        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
+        <div className="absolute top-10 right-10 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/3 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px]" />
+        
+        {/* Floating decorative elements */}
+        <motion.div
+          className="absolute top-24 left-[15%] w-2 h-2 bg-primary/30 rounded-full"
+          animate={{ y: [0, -20, 0], opacity: [0.3, 0.8, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute top-40 right-[20%] w-3 h-3 bg-accent/25 rounded-full"
+          animate={{ y: [0, 15, 0], opacity: [0.2, 0.6, 0.2] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        />
+        <motion.div
+          className="absolute bottom-32 left-[25%] w-1.5 h-1.5 bg-primary/40 rounded-full"
+          animate={{ y: [0, -12, 0], opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+        />
+
         <div className="container mx-auto max-w-6xl relative">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <motion.div
@@ -111,59 +130,160 @@ export default function Index() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
+              {/* Badge */}
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-8 border border-primary/20 backdrop-blur-sm"
+                initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <Zap className="w-3.5 h-3.5" /> Free & Open-Source · Trusted by 10,000+ Learners
+                <motion.span
+                  animate={{ rotate: [0, 15, -15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  <Sparkles className="w-4 h-4" />
+                </motion.span>
+                Free & Open-Source · Trusted by 10,000+ Learners
               </motion.div>
-              <h1 className="text-5xl lg:text-7xl font-black text-foreground leading-[1.08] mb-6 tracking-tight">
-                Decode Algorithms,{' '}
-                <span className="gradient-text">One Step at a Time</span>
+
+              {/* Title */}
+              <h1 className="text-5xl lg:text-7xl font-black text-foreground leading-[1.05] mb-4 tracking-tight">
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="block"
+                >
+                  Decode Algorithms,
+                </motion.span>
+                <motion.span
+                  className="gradient-text block mt-1"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.25 }}
+                >
+                  One Step at a Time
+                </motion.span>
               </h1>
-              <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed">
+
+              {/* Subtitle */}
+              <motion.p
+                className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
                 The most intuitive way to learn <strong className="text-foreground">Data Structures & Algorithms</strong>. 
                 Interactive visualizations for <strong className="text-foreground">6 data structures</strong>, <strong className="text-foreground">8 algorithms</strong>, and <strong className="text-foreground">22+ operations</strong> — all with real-time, step-by-step animations.
-              </p>
-              <div className="flex gap-3 justify-center lg:justify-start flex-wrap">
-                <Button asChild size="lg" className="rounded-full px-8 gap-2 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all h-12">
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div
+                className="flex gap-3 justify-center lg:justify-start flex-wrap"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55, duration: 0.5 }}
+              >
+                <Button asChild size="lg" className="rounded-full px-8 gap-2 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all h-13 font-semibold">
                   <Link to="/playground"><Rocket className="w-5 h-5" /> Launch Playground</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-8 gap-2 text-base border-2 hover:bg-secondary h-12">
+                <Button asChild variant="outline" size="lg" className="rounded-full px-8 gap-2 text-base border-2 hover:bg-secondary hover:scale-105 transition-all h-13 font-semibold">
                   <Link to="/visualizer"><Eye className="w-5 h-5" /> Explore Algorithms</Link>
                 </Button>
-              </div>
-              <div className="flex items-center gap-6 mt-8 justify-center lg:justify-start text-sm text-muted-foreground flex-wrap">
-                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-primary" /> No sign-up needed</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-primary" /> 100% free forever</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-primary" /> Works offline</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-primary" /> No ads</span>
-              </div>
+              </motion.div>
+
+              {/* Trust badges */}
+              <motion.div
+                className="flex items-center gap-5 mt-10 justify-center lg:justify-start text-sm text-muted-foreground flex-wrap"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+              >
+                {[
+                  { label: 'No sign-up needed', icon: CheckCircle2 },
+                  { label: '100% free forever', icon: CheckCircle2 },
+                  { label: 'Works offline', icon: CheckCircle2 },
+                  { label: 'No ads', icon: CheckCircle2 },
+                ].map((badge) => (
+                  <span key={badge.label} className="flex items-center gap-1.5 bg-secondary/60 px-3 py-1.5 rounded-full border border-border/50">
+                    <badge.icon className="w-3.5 h-3.5 text-primary" /> {badge.label}
+                  </span>
+                ))}
+              </motion.div>
             </motion.div>
 
+            {/* Hero visual */}
             <motion.div
               className="flex-shrink-0"
               initial={{ opacity: 0, scale: 0.85, rotate: -2 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="relative">
-                <div className="absolute -inset-6 bg-primary/8 rounded-3xl blur-2xl" />
-                <div className="glass-card p-8 w-80 relative">
-                  <div className="flex items-center gap-2 mb-4">
+                <div className="absolute -inset-8 bg-primary/10 rounded-[2rem] blur-3xl" />
+                <motion.div
+                  className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary/20 via-accent/10 to-transparent"
+                  animate={{ opacity: [0.5, 0.8, 0.5] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <div className="glass-card p-8 w-80 relative overflow-hidden">
+                  {/* Terminal header */}
+                  <div className="flex items-center gap-2 mb-5">
                     <div className="w-3 h-3 rounded-full bg-destructive/60" />
                     <div className="w-3 h-3 rounded-full bg-primary/50" />
                     <div className="w-3 h-3 rounded-full bg-accent/60" />
-                    <span className="text-xs font-mono text-muted-foreground ml-2">bubble_sort.js</span>
+                    <span className="text-xs font-mono text-muted-foreground ml-auto">bubble_sort.js</span>
                   </div>
+
+                  {/* Sorting animation */}
                   <SortingAnimation />
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs font-mono text-primary font-semibold">sorting in progress...</span>
-                    <span className="text-[10px] font-mono text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">O(n²)</span>
+
+                  {/* Status bar */}
+                  <div className="mt-5 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <motion.div
+                        className="w-2 h-2 rounded-full bg-primary"
+                        animate={{ opacity: [1, 0.3, 1] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      />
+                      <span className="text-xs font-mono text-primary font-semibold">sorting...</span>
+                    </div>
+                    <span className="text-[10px] font-mono text-muted-foreground bg-secondary px-2.5 py-1 rounded-full border border-border/50">O(n²)</span>
+                  </div>
+
+                  {/* Mini code preview */}
+                  <div className="mt-4 pt-4 border-t border-border/40">
+                    <div className="space-y-1 font-mono text-[10px] text-muted-foreground/70">
+                      <div><span className="text-primary/60">for</span> (i = 0; i {'<'} n-1; i++)</div>
+                      <div className="pl-3"><span className="text-primary/60">if</span> (arr[j] {'>'} arr[j+1])</div>
+                      <div className="pl-6 text-accent/70">swap(arr[j], arr[j+1])</div>
+                    </div>
                   </div>
                 </div>
+
+                {/* Floating stat cards */}
+                <motion.div
+                  className="absolute -right-12 top-6 glass-card px-3 py-2 rounded-lg shadow-lg"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                >
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-3.5 h-3.5 text-primary" />
+                    <span className="text-[11px] font-semibold text-foreground">8 Algorithms</span>
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="absolute -left-10 bottom-16 glass-card px-3 py-2 rounded-lg shadow-lg"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                >
+                  <div className="flex items-center gap-2">
+                    <Layers className="w-3.5 h-3.5 text-accent" />
+                    <span className="text-[11px] font-semibold text-foreground">6 Structures</span>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
