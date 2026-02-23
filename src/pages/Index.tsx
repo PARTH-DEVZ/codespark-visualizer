@@ -5,13 +5,13 @@ import {
   Play, Eye, BarChart3, Zap, ArrowRight, Layers, GitBranch, Share2,
   ArrowUpFromLine, ArrowRightLeft, Link as LinkIcon, CheckCircle2,
   BookOpen, Code2, Rocket, TrendingUp, Cpu, Star, Trophy, Target,
-  GraduationCap, Timer, Brain, Sparkles, Shield, Users
-} from 'lucide-react';
+  GraduationCap, Timer, Brain, Sparkles, Shield, Users } from
+'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import SortingAnimation from '@/components/landing/SortingAnimation';
 
-function AnimatedCounter({ target, suffix = '', label, description, icon: Icon }: { target: number; suffix?: string; label: string; description: string; icon: typeof Layers }) {
+function AnimatedCounter({ target, suffix = '', label, description, icon: Icon }: {target: number;suffix?: string;label: string;description: string;icon: typeof Layers;}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
@@ -22,7 +22,7 @@ function AnimatedCounter({ target, suffix = '', label, description, icon: Icon }
     const totalFrames = 45;
     const timer = setInterval(() => {
       frame++;
-      setCount(Math.round((frame / totalFrames) * target));
+      setCount(Math.round(frame / totalFrames * target));
       if (frame >= totalFrames) clearInterval(timer);
     }, 25);
     return () => clearInterval(timer);
@@ -32,8 +32,8 @@ function AnimatedCounter({ target, suffix = '', label, description, icon: Icon }
     <motion.div
       ref={ref}
       className="text-center p-8 rounded-2xl bg-card border border-border/50 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group"
-      whileHover={{ y: -6 }}
-    >
+      whileHover={{ y: -6 }}>
+
       <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
         <Icon className="w-7 h-7 text-primary" />
       </div>
@@ -42,55 +42,55 @@ function AnimatedCounter({ target, suffix = '', label, description, icon: Icon }
       </div>
       <div className="text-sm font-bold text-foreground">{label}</div>
       <div className="text-xs text-muted-foreground mt-1">{description}</div>
-    </motion.div>
-  );
+    </motion.div>);
+
 }
 
 const features = [
-  {
-    icon: Play,
-    title: 'Interactive Playground',
-    description: 'Hands-on practice with 6 core data structures. Insert, delete, search, sort, traverse — watch every operation animate step-by-step with full speed control and detailed output logs.',
-    highlights: ['Step-by-step animations', 'Adjustable speed control', '22+ operations covered', 'Real-time output logs'],
-    gradient: 'from-primary/10 to-primary/5',
-  },
-  {
-    icon: Eye,
-    title: 'Algorithm Visualizer',
-    description: 'Visualize 8 essential algorithms across Sorting (Bubble, Insertion, Merge, Quick), Searching (Linear, Binary), and Graph Traversal (BFS, DFS) with synchronized pseudocode.',
-    highlights: ['8 algorithms visualized', 'Synced pseudocode panel', 'Time & space complexity', 'Playback controls'],
-    gradient: 'from-accent/10 to-accent/5',
-  },
-  {
-    icon: BarChart3,
-    title: 'Progress Tracking',
-    description: 'Your learning journey is automatically saved. Track which operations you\'ve explored per data structure with visual progress bars and overall completion percentage.',
-    highlights: ['Auto-save to browser', 'Per-structure tracking', 'Visual progress bars', 'Completion percentage'],
-    gradient: 'from-primary/10 to-accent/5',
-  },
-];
+{
+  icon: Play,
+  title: 'Interactive Playground',
+  description: 'Hands-on practice with 6 core data structures. Insert, delete, search, sort, traverse — watch every operation animate step-by-step with full speed control and detailed output logs.',
+  highlights: ['Step-by-step animations', 'Adjustable speed control', '22+ operations covered', 'Real-time output logs'],
+  gradient: 'from-primary/10 to-primary/5'
+},
+{
+  icon: Eye,
+  title: 'Algorithm Visualizer',
+  description: 'Visualize 8 essential algorithms across Sorting (Bubble, Insertion, Merge, Quick), Searching (Linear, Binary), and Graph Traversal (BFS, DFS) with synchronized pseudocode.',
+  highlights: ['8 algorithms visualized', 'Synced pseudocode panel', 'Time & space complexity', 'Playback controls'],
+  gradient: 'from-accent/10 to-accent/5'
+},
+{
+  icon: BarChart3,
+  title: 'Progress Tracking',
+  description: 'Your learning journey is automatically saved. Track which operations you\'ve explored per data structure with visual progress bars and overall completion percentage.',
+  highlights: ['Auto-save to browser', 'Per-structure tracking', 'Visual progress bars', 'Completion percentage'],
+  gradient: 'from-primary/10 to-accent/5'
+}];
+
 
 const dsCards = [
-  { icon: Layers, name: 'Array', ops: 'Insert, Delete, Search, Sort, Reverse', detail: 'Dynamic resizing & index-based access', color: 'bg-emerald-500/10 text-emerald-600' },
-  { icon: LinkIcon, name: 'Linked List', ops: 'Insert Head/Tail, Delete, Search', detail: 'Node-based sequential structure', color: 'bg-teal-500/10 text-teal-600' },
-  { icon: ArrowUpFromLine, name: 'Stack', ops: 'Push, Pop, Peek', detail: 'LIFO — Last In, First Out', color: 'bg-green-500/10 text-green-600' },
-  { icon: ArrowRightLeft, name: 'Queue', ops: 'Enqueue, Dequeue, Peek', detail: 'FIFO — First In, First Out', color: 'bg-cyan-500/10 text-cyan-600' },
-  { icon: GitBranch, name: 'Binary Search Tree', ops: 'Insert, Search, Inorder, Pre/Post', detail: 'Hierarchical sorted structure', color: 'bg-lime-500/10 text-lime-600' },
-  { icon: Share2, name: 'Graph', ops: 'Add Vertex/Edge, BFS, DFS', detail: 'Vertices & edges with traversals', color: 'bg-sky-500/10 text-sky-600' },
-];
+{ icon: Layers, name: 'Array', ops: 'Insert, Delete, Search, Sort, Reverse', detail: 'Dynamic resizing & index-based access', color: 'bg-emerald-500/10 text-emerald-600' },
+{ icon: LinkIcon, name: 'Linked List', ops: 'Insert Head/Tail, Delete, Search', detail: 'Node-based sequential structure', color: 'bg-teal-500/10 text-teal-600' },
+{ icon: ArrowUpFromLine, name: 'Stack', ops: 'Push, Pop, Peek', detail: 'LIFO — Last In, First Out', color: 'bg-green-500/10 text-green-600' },
+{ icon: ArrowRightLeft, name: 'Queue', ops: 'Enqueue, Dequeue, Peek', detail: 'FIFO — First In, First Out', color: 'bg-cyan-500/10 text-cyan-600' },
+{ icon: GitBranch, name: 'Binary Search Tree', ops: 'Insert, Search, Inorder, Pre/Post', detail: 'Hierarchical sorted structure', color: 'bg-lime-500/10 text-lime-600' },
+{ icon: Share2, name: 'Graph', ops: 'Add Vertex/Edge, BFS, DFS', detail: 'Vertices & edges with traversals', color: 'bg-sky-500/10 text-sky-600' }];
+
 
 const testimonials = [
-  { text: '"Finally a tool that makes BST traversals click. The step-by-step highlighting is brilliant — I wish I had this during my algorithms class."', author: 'Priya Sharma', role: 'CS Student, Stanford', avatar: '🎓' },
-  { text: '"I use this daily to prep for coding interviews. The graph BFS/DFS visualization saved me hours of confusion and helped me land my dream job."', author: 'Alex Chen', role: 'Software Engineer, Google', avatar: '💼' },
-  { text: '"Clean UI, no sign-up needed, works instantly. The complexity analysis alongside visualizations is a game-changer for self-taught devs."', author: 'Marcus Johnson', role: 'Self-taught Developer', avatar: '🚀' },
-];
+{ text: '"Finally a tool that makes BST traversals click. The step-by-step highlighting is brilliant — I wish I had this during my algorithms class."', author: 'Priya Sharma', role: 'CS Student, Stanford', avatar: '🎓' },
+{ text: '"I use this daily to prep for coding interviews. The graph BFS/DFS visualization saved me hours of confusion and helped me land my dream job."', author: 'Alex Chen', role: 'Software Engineer, Google', avatar: '💼' },
+{ text: '"Clean UI, no sign-up needed, works instantly. The complexity analysis alongside visualizations is a game-changer for self-taught devs."', author: 'Marcus Johnson', role: 'Self-taught Developer', avatar: '🚀' }];
+
 
 const whyCards = [
-  { icon: Brain, title: 'Visual Learning', desc: 'Research shows visual learners retain 65% more information. Our animations make abstract concepts concrete and memorable.' },
-  { icon: Timer, title: 'Save Time', desc: 'Stop spending hours reading textbooks. Understand any algorithm in minutes with interactive, step-by-step visualizations.' },
-  { icon: Target, title: 'Interview Ready', desc: 'Practice the exact data structures and algorithms asked in FAANG interviews with real-time complexity analysis.' },
-  { icon: Shield, title: 'Zero Setup', desc: 'No installations, no sign-ups, no configuration. Open your browser and start learning immediately — it just works.' },
-];
+{ icon: Brain, title: 'Visual Learning', desc: 'Research shows visual learners retain 65% more information. Our animations make abstract concepts concrete and memorable.' },
+{ icon: Timer, title: 'Save Time', desc: 'Stop spending hours reading textbooks. Understand any algorithm in minutes with interactive, step-by-step visualizations.' },
+{ icon: Target, title: 'Interview Ready', desc: 'Practice the exact data structures and algorithms asked in FAANG interviews with real-time complexity analysis.' },
+{ icon: Shield, title: 'Zero Setup', desc: 'No installations, no sign-ups, no configuration. Open your browser and start learning immediately — it just works.' }];
+
 
 export default function Index() {
   return (
@@ -109,18 +109,18 @@ export default function Index() {
         <motion.div
           className="absolute top-24 left-[15%] w-2 h-2 bg-primary/30 rounded-full"
           animate={{ y: [0, -20, 0], opacity: [0.3, 0.8, 0.3] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        />
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
+
         <motion.div
           className="absolute top-40 right-[20%] w-3 h-3 bg-accent/25 rounded-full"
           animate={{ y: [0, 15, 0], opacity: [0.2, 0.6, 0.2] }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        />
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }} />
+
         <motion.div
           className="absolute bottom-32 left-[25%] w-1.5 h-1.5 bg-primary/40 rounded-full"
           animate={{ y: [0, -12, 0], opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-        />
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }} />
+
 
         <div className="container mx-auto max-w-6xl relative">
           <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -128,19 +128,19 @@ export default function Index() {
               className="flex-1 text-center lg:text-left"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
+              transition={{ duration: 0.7 }}>
+
               {/* Badge */}
               <motion.div
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-8 border border-primary/20 backdrop-blur-sm"
                 initial={{ opacity: 0, scale: 0.9, y: -10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
+                transition={{ delay: 0.2 }}>
+
                 <motion.span
                   animate={{ rotate: [0, 15, -15, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                >
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}>
+
                   <Sparkles className="w-4 h-4" />
                 </motion.span>
                 Free & Open-Source · Trusted by 10,000+ Learners
@@ -152,16 +152,16 @@ export default function Index() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="block"
-                >
+                  className="block">
+
                   Decode Algorithms,
                 </motion.span>
                 <motion.span
                   className="gradient-text block mt-1"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.25 }}
-                >
+                  transition={{ duration: 0.6, delay: 0.25 }}>
+
                   One Step at a Time
                 </motion.span>
               </h1>
@@ -171,8 +171,8 @@ export default function Index() {
                 className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
+                transition={{ delay: 0.4, duration: 0.6 }}>
+
                 The most intuitive way to learn <strong className="text-foreground">Data Structures & Algorithms</strong>. 
                 Interactive visualizations for <strong className="text-foreground">6 data structures</strong>, <strong className="text-foreground">8 algorithms</strong>, and <strong className="text-foreground">22+ operations</strong> — all with real-time, step-by-step animations.
               </motion.p>
@@ -182,8 +182,8 @@ export default function Index() {
                 className="flex gap-3 justify-center lg:justify-start flex-wrap"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55, duration: 0.5 }}
-              >
+                transition={{ delay: 0.55, duration: 0.5 }}>
+
                 <Button asChild size="lg" className="rounded-full px-8 gap-2 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all h-13 font-semibold">
                   <Link to="/playground"><Rocket className="w-5 h-5" /> Launch Playground</Link>
                 </Button>
@@ -197,18 +197,18 @@ export default function Index() {
                 className="flex items-center gap-5 mt-10 justify-center lg:justify-start text-sm text-muted-foreground flex-wrap"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              >
+                transition={{ delay: 0.7, duration: 0.5 }}>
+
                 {[
-                  { label: 'No sign-up needed', icon: CheckCircle2 },
-                  { label: '100% free forever', icon: CheckCircle2 },
-                  { label: 'Works offline', icon: CheckCircle2 },
-                  { label: 'No ads', icon: CheckCircle2 },
-                ].map((badge) => (
-                  <span key={badge.label} className="flex items-center gap-1.5 bg-secondary/60 px-3 py-1.5 rounded-full border border-border/50">
+                { label: 'No sign-up needed', icon: CheckCircle2 },
+                { label: '100% free forever', icon: CheckCircle2 },
+                { label: 'Works offline', icon: CheckCircle2 },
+                { label: 'No ads', icon: CheckCircle2 }].
+                map((badge) =>
+                <span key={badge.label} className="flex items-center gap-1.5 bg-secondary/60 px-3 py-1.5 rounded-full border border-border/50">
                     <badge.icon className="w-3.5 h-3.5 text-primary" /> {badge.label}
                   </span>
-                ))}
+                )}
               </motion.div>
             </motion.div>
 
@@ -217,15 +217,15 @@ export default function Index() {
               className="flex-shrink-0"
               initial={{ opacity: 0, scale: 0.85, rotate: -2 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
+              transition={{ duration: 0.8, delay: 0.3 }}>
+
               <div className="relative">
                 <div className="absolute -inset-8 bg-primary/10 rounded-[2rem] blur-3xl" />
                 <motion.div
                   className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary/20 via-accent/10 to-transparent"
                   animate={{ opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                />
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} />
+
                 <div className="glass-card p-8 w-80 relative overflow-hidden">
                   {/* Terminal header */}
                   <div className="flex items-center gap-2 mb-5">
@@ -244,8 +244,8 @@ export default function Index() {
                       <motion.div
                         className="w-2 h-2 rounded-full bg-primary"
                         animate={{ opacity: [1, 0.3, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      />
+                        transition={{ duration: 1.5, repeat: Infinity }} />
+
                       <span className="text-xs font-mono text-primary font-semibold">sorting...</span>
                     </div>
                     <span className="text-[10px] font-mono text-muted-foreground bg-secondary px-2.5 py-1 rounded-full border border-border/50">O(n²)</span>
@@ -266,24 +266,24 @@ export default function Index() {
                   className="absolute -right-12 top-6 glass-card px-3 py-2 rounded-lg shadow-lg"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
-                >
+                  transition={{ delay: 0.8, duration: 0.5 }}>
+
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-3.5 h-3.5 text-primary" />
                     <span className="text-[11px] font-semibold text-foreground">8 Algorithms</span>
                   </div>
                 </motion.div>
-                <motion.div
-                  className="absolute -left-10 bottom-16 glass-card px-3 py-2 rounded-lg shadow-lg"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1, duration: 0.5 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Layers className="w-3.5 h-3.5 text-accent" />
-                    <span className="text-[11px] font-semibold text-foreground">6 Structures</span>
-                  </div>
-                </motion.div>
+                
+
+
+
+
+
+
+
+
+
+
               </div>
             </motion.div>
           </div>
@@ -297,30 +297,30 @@ export default function Index() {
             className="text-center mb-14"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why CodePilot?</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for how you actually learn</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Stop memorizing — start understanding. CodePilot transforms abstract algorithms into visual, interactive experiences.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {whyCards.map((card, i) => (
-              <motion.div
-                key={card.title}
-                className="p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300 group text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -6 }}
-              >
+            {whyCards.map((card, i) =>
+            <motion.div
+              key={card.title}
+              className="p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300 group text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -6 }}>
+
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/15 transition-colors">
                   <card.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-bold text-foreground mb-2">{card.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{card.desc}</p>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -332,25 +332,25 @@ export default function Index() {
             className="text-center mb-14"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Data Structures</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">6 Core Structures, Fully Interactive</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Each structure comes with dedicated operations, SVG/HTML animations, real-time output logs, and time complexity analysis for every operation.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {dsCards.map((ds, i) => (
-              <motion.div
-                key={ds.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.4 }}
-              >
+            {dsCards.map((ds, i) =>
+            <motion.div
+              key={ds.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.4 }}>
+
                 <Link
-                  to="/playground"
-                  className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300 group"
-                >
+                to="/playground"
+                className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300 group">
+
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${ds.color} group-hover:scale-110 transition-transform`}>
                     <ds.icon className="w-6 h-6" />
                   </div>
@@ -362,7 +362,7 @@ export default function Index() {
                   <ArrowRight className="w-4 h-4 text-muted-foreground mt-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </Link>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -374,37 +374,37 @@ export default function Index() {
             className="text-center mb-14"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Platform Features</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Everything you need to master DSA</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Three powerful tools designed to take you from confused to confident.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                className={`relative p-8 rounded-2xl bg-gradient-to-br ${f.gradient} border border-border/40 hover:shadow-2xl transition-all duration-300 group`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.5 }}
-                whileHover={{ y: -6 }}
-              >
+            {features.map((f, i) =>
+            <motion.div
+              key={f.title}
+              className={`relative p-8 rounded-2xl bg-gradient-to-br ${f.gradient} border border-border/40 hover:shadow-2xl transition-all duration-300 group`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.12, duration: 0.5 }}
+              whileHover={{ y: -6 }}>
+
                 <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mb-6 shadow-md">
                   <f.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <h3 className="font-bold text-xl mb-3 text-foreground">{f.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">{f.description}</p>
                 <ul className="space-y-2.5">
-                  {f.highlights.map(h => (
-                    <li key={h} className="flex items-center gap-2 text-xs text-foreground font-medium">
+                  {f.highlights.map((h) =>
+                <li key={h} className="flex items-center gap-2 text-xs text-foreground font-medium">
                       <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" /> {h}
                     </li>
-                  ))}
+                )}
                 </ul>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -416,8 +416,8 @@ export default function Index() {
             className="text-center mb-14"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">By The Numbers</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for comprehensive, in-depth learning</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">Covering the essential data structures and algorithms every developer needs to know.</p>
@@ -438,26 +438,26 @@ export default function Index() {
             className="text-center mb-14"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Getting Started</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Start learning in under 30 seconds</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">No installation, no configuration, no account needed. Just three simple steps.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              { step: '01', icon: BookOpen, title: 'Choose Your Topic', desc: 'Pick from 6 data structures or 8 algorithms. Each comes with a dedicated, purpose-built visualization.' },
-              { step: '02', icon: Code2, title: 'Run Operations', desc: 'Insert values, search, sort, traverse — trigger any operation with one click and watch it execute step-by-step.' },
-              { step: '03', icon: TrendingUp, title: 'Watch, Learn, Repeat', desc: 'See each step animate with color-coded highlights, pseudocode sync, output logs, and complexity analysis.' },
-            ].map((item, i) => (
-              <motion.div
-                key={item.step}
-                className="text-center relative"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-              >
+            { step: '01', icon: BookOpen, title: 'Choose Your Topic', desc: 'Pick from 6 data structures or 8 algorithms. Each comes with a dedicated, purpose-built visualization.' },
+            { step: '02', icon: Code2, title: 'Run Operations', desc: 'Insert values, search, sort, traverse — trigger any operation with one click and watch it execute step-by-step.' },
+            { step: '03', icon: TrendingUp, title: 'Watch, Learn, Repeat', desc: 'See each step animate with color-coded highlights, pseudocode sync, output logs, and complexity analysis.' }].
+            map((item, i) =>
+            <motion.div
+              key={item.step}
+              className="text-center relative"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}>
+
                 <div className="text-7xl font-black gradient-text opacity-15 mb-2">{item.step}</div>
                 <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-5 shadow-lg">
                   <item.icon className="w-8 h-8 text-primary-foreground" />
@@ -465,7 +465,7 @@ export default function Index() {
                 <h3 className="font-bold text-lg text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -477,28 +477,28 @@ export default function Index() {
             className="text-center mb-14"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Community</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Loved by students & engineers worldwide</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">Join thousands of developers who use CodePilot to level up their DSA skills.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                className="p-7 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300"
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+            {testimonials.map((t, i) =>
+            <motion.div
+              key={i}
+              className="p-7 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}>
+
                 <div className="flex gap-1 mb-4">
-                  {[1, 2, 3, 4, 5].map(s => (
-                    <svg key={s} className="w-4 h-4 text-primary fill-primary" viewBox="0 0 20 20">
+                  {[1, 2, 3, 4, 5].map((s) =>
+                <svg key={s} className="w-4 h-4 text-primary fill-primary" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
-                  ))}
+                )}
                 </div>
                 <p className="text-sm text-foreground italic leading-relaxed mb-5">{t.text}</p>
                 <div className="flex items-center gap-3">
@@ -509,7 +509,7 @@ export default function Index() {
                   </div>
                 </div>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -521,8 +521,8 @@ export default function Index() {
             className="text-center p-14 rounded-3xl gradient-primary relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.15),transparent)]" />
             <div className="relative">
               <GraduationCap className="w-10 h-10 text-primary-foreground/80 mx-auto mb-5" />
@@ -557,6 +557,6 @@ export default function Index() {
           <span>Built with React & TypeScript · 100% Free</span>
         </div>
       </footer>
-    </div>
-  );
+    </div>);
+
 }
