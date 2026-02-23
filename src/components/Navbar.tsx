@@ -18,7 +18,7 @@ export default function Navbar() {
             <Code2 className="w-5 h-5 text-primary-foreground" />
           </div>
           <span className="font-extrabold text-xl text-foreground tracking-tight">
-            Code<span className="gradient-text">PILOT</span>
+            Code<span className="gradient-text">Pilot</span>
           </span>
         </Link>
         <div className="flex items-center gap-2">
