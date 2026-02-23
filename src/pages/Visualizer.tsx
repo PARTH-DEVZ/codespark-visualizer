@@ -69,6 +69,7 @@ export default function Visualizer() {
   const [arraySize, setArraySize] = useState(15);
   const [speed, setSpeed] = useState(300);
   const [searchTarget, setSearchTarget] = useState('');
+  const [customInput, setCustomInput] = useState('');
 
   // Steps state
   const [steps, setSteps] = useState<AlgorithmStep[]>([]);
@@ -102,8 +103,14 @@ export default function Visualizer() {
     playingRef.current = false;
     setCurrentStep(0);
 
+    const parseCustomArray = (): number[] | null => {
+      if (!customInput.trim()) return null;
+      const nums = customInput.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
+      return nums.length >= 2 ? nums : null;
+    };
+
     if (category === 'sorting') {
-      const arr = generateArray(arraySize);
+      const arr = parseCustomArray() || generateArray(arraySize);
       setSourceArray(arr);
       let s: AlgorithmStep[] = [];
       if (algo === 'Bubble Sort') s = bubbleSortSteps(arr);
@@ -113,7 +120,7 @@ export default function Visualizer() {
       setSteps(s);
       setGraphSteps([]);
     } else if (category === 'searching') {
-      const arr = generateArray(arraySize);
+      const arr = parseCustomArray() || generateArray(arraySize);
       setSourceArray(arr);
       const target = parseInt(searchTarget) || arr[Math.floor(Math.random() * arr.length)];
       let s: AlgorithmStep[] = [];
@@ -129,7 +136,7 @@ export default function Visualizer() {
       setGraphSteps(gs);
       setSteps([]);
     }
-  }, [category, algo, arraySize, searchTarget, graph]);
+  }, [category, algo, arraySize, searchTarget, graph, customInput]);
 
   useEffect(() => { generate(); }, [generate]);
 
@@ -374,6 +381,21 @@ export default function Visualizer() {
                     />
                   </div>
                 </div>
+
+                {/* Custom data input */}
+                {!isGraph && (
+                  <div className="mt-4">
+                    <label className="text-xs font-medium text-muted-foreground mb-1.5 block">
+                      Custom Data (comma-separated numbers, or leave empty for random)
+                    </label>
+                    <Input
+                      placeholder="e.g. 42, 17, 88, 5, 63, 29"
+                      value={customInput}
+                      onChange={e => setCustomInput(e.target.value)}
+                      className="font-mono text-sm"
+                    />
+                  </div>
+                )}
 
                 {/* Search target + Generate */}
                 <div className="flex gap-2 mt-4">
