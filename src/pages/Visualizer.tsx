@@ -2,7 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Play, Pause, SkipForward, SkipBack, RotateCcw, ArrowRight,
-  Timer, Ruler, Search, BarChart3, GitBranch, Info
+  Timer, Ruler, Search, BarChart3, GitBranch, Info, Eye
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -186,41 +186,59 @@ export default function Visualizer() {
       <div className="pt-20 px-4 pb-8">
         <div className="container mx-auto max-w-7xl">
           {/* Header */}
-          <div className="mb-6">
-            <h1 className="text-2xl font-bold text-foreground">Algorithm Visualizer</h1>
-            <p className="text-sm text-muted-foreground">Watch sorting, searching, and graph algorithms step by step</p>
-          </div>
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}>
+            <div className="flex items-center gap-3 mb-1">
+              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-md">
+                <Eye className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-foreground">Algorithm Visualizer</h1>
+                <p className="text-sm text-muted-foreground">Watch sorting, searching, and graph algorithms step by step</p>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Category tabs */}
           <div className="flex gap-2 mb-4">
             {(Object.keys(ALGORITHMS) as AlgoCategory[]).map(c => {
               const Icon = CATEGORY_ICONS[c];
               return (
-                <Button
-                  key={c}
-                  variant={category === c ? 'default' : 'outline'}
-                  size="sm"
-                  className="rounded-full gap-1.5 capitalize"
-                  onClick={() => handleCategoryChange(c)}
-                >
-                  <Icon className="w-3.5 h-3.5" /> {c}
-                </Button>
+                <motion.div key={c} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                  <Button
+                    variant={category === c ? 'default' : 'outline'}
+                    size="sm"
+                    className={`rounded-full gap-1.5 capitalize ${category === c ? 'shadow-md shadow-primary/20' : ''}`}
+                    onClick={() => handleCategoryChange(c)}
+                  >
+                    <Icon className="w-3.5 h-3.5" /> {c}
+                  </Button>
+                </motion.div>
               );
             })}
           </div>
 
           {/* Algorithm selector */}
           <div className="flex flex-wrap gap-2 mb-6">
-            {ALGORITHMS[category].map(a => (
-              <Button
+            {ALGORITHMS[category].map((a, i) => (
+              <motion.div
                 key={a.name}
-                variant={algo === a.name ? 'default' : 'secondary'}
-                size="sm"
-                onClick={() => { setAlgo(a.name); }}
-                className="text-xs"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
               >
-                {a.label}
-              </Button>
+                <Button
+                  variant={algo === a.name ? 'default' : 'secondary'}
+                  size="sm"
+                  onClick={() => { setAlgo(a.name); }}
+                  className={`text-xs ${algo === a.name ? 'shadow-md shadow-primary/20' : 'hover:bg-secondary/80'}`}
+                >
+                  {a.label}
+                </Button>
+              </motion.div>
             ))}
           </div>
 

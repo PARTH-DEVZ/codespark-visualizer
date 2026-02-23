@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Layers, Link as LinkIcon, ArrowUpFromLine, ArrowRightLeft, GitBranch, Share2, Shuffle } from 'lucide-react';
+import { Layers, Link as LinkIcon, ArrowUpFromLine, ArrowRightLeft, GitBranch, Share2, Shuffle, Code2, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
@@ -308,27 +308,57 @@ export default function Playground() {
       <Navbar />
       <div className="pt-20 px-4 pb-8">
         <div className="container mx-auto max-w-7xl">
+          {/* Page Header */}
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}>
+            <div className="flex items-center gap-3 mb-1">
+              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-md">
+                <Layers className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-foreground">Interactive Playground</h1>
+                <p className="text-sm text-muted-foreground">Explore data structures with hands-on, animated operations</p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* DS Selector */}
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
-            {ALL_DS.map(ds => {
+            {ALL_DS.map((ds, i) => {
               const Icon = DS_ICONS[ds];
               const p = getProgress(ds);
               return (
                 <motion.button
                   key={ds}
                   onClick={() => { setSelectedDS(ds); setHighlighted([]); }}
-                  className={`relative p-4 rounded-xl border-2 transition-all text-left ${
+                  className={`relative p-4 rounded-xl border-2 transition-all text-left group ${
                     selectedDS === ds
-                      ? 'border-primary bg-primary/5 shadow-md'
-                      : 'border-border bg-card hover:border-primary/30'
+                      ? 'border-primary bg-primary/5 shadow-lg shadow-primary/10'
+                      : 'border-border bg-card hover:border-primary/30 hover:shadow-md'
                   }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                 >
-                  <Icon className={`w-5 h-5 mb-2 ${selectedDS === ds ? 'text-primary' : 'text-muted-foreground'}`} />
+                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 transition-colors ${
+                    selectedDS === ds ? 'bg-primary/15' : 'bg-muted group-hover:bg-primary/10'
+                  }`}>
+                    <Icon className={`w-4.5 h-4.5 ${selectedDS === ds ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'}`} />
+                  </div>
                   <div className="text-sm font-semibold text-foreground">{DS_LABELS[ds]}</div>
-                  <div className="mt-2 h-1 rounded-full bg-muted overflow-hidden">
-                    <div className="h-full bg-accent rounded-full transition-all" style={{ width: `${p.percent}%` }} />
+                  <div className="text-[10px] text-muted-foreground font-mono mt-0.5">{p.done}/{p.total} ops</div>
+                  <div className="mt-2 h-1.5 rounded-full bg-muted overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${p.percent}%` }}
+                      transition={{ duration: 0.6, delay: i * 0.05 }}
+                    />
                   </div>
                 </motion.button>
               );
@@ -445,18 +475,41 @@ export default function Playground() {
 
               {/* Log */}
               <div className="glass-card">
-                <div className="px-4 py-2 border-b border-border/50">
-                  <h3 className="text-sm font-semibold text-foreground">Output Log</h3>
+                <div className="px-4 py-2 border-b border-border/50 flex items-center justify-between">
+                  <h3 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    Output Log
+                  </h3>
+                  {log.length > 0 && (
+                    <button onClick={() => setLog([])} className="text-[10px] text-muted-foreground hover:text-foreground transition-colors">
+                      Clear
+                    </button>
+                  )}
                 </div>
-                <ScrollArea className="h-40 p-4">
-                  {log.length === 0 && <div className="text-sm text-muted-foreground">Perform an operation to see output here</div>}
-                  {log.map((entry, i) => (
-                    <div key={i} className="flex gap-2 text-xs mb-1.5 font-mono">
-                      <span className="text-muted-foreground flex-shrink-0">{entry.time}</span>
-                      <span className={
-                        entry.type === 'success' ? 'text-accent' : entry.type === 'error' ? 'text-destructive' : 'text-foreground'
-                      }>{entry.message}</span>
+                <ScrollArea className="h-44 p-4">
+                  {log.length === 0 && (
+                    <div className="flex flex-col items-center justify-center h-full text-muted-foreground py-8">
+                      <Code2 className="w-8 h-8 mb-2 opacity-30" />
+                      <span className="text-sm">Perform an operation to see output here</span>
                     </div>
+                  )}
+                  {log.map((entry, i) => (
+                    <motion.div
+                      key={i}
+                      initial={i === 0 ? { opacity: 0, x: -10 } : false}
+                      animate={{ opacity: 1, x: 0 }}
+                      className={`flex gap-2 text-xs mb-1.5 font-mono py-1 px-2 rounded-md ${
+                        i === 0 ? 'bg-secondary/50' : ''
+                      }`}
+                    >
+                      <span className="text-muted-foreground/60 flex-shrink-0">{entry.time}</span>
+                      <span className={`flex items-center gap-1 ${
+                        entry.type === 'success' ? 'text-primary font-medium' : entry.type === 'error' ? 'text-destructive font-medium' : 'text-foreground'
+                      }`}>
+                        {entry.type === 'success' && <CheckCircle2 className="w-3 h-3 flex-shrink-0" />}
+                        {entry.message}
+                      </span>
+                    </motion.div>
                   ))}
                 </ScrollArea>
               </div>
