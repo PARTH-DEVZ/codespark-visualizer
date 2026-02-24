@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useProgress } from '@/hooks/useProgress';
-import { Code2, Home, Play, Eye } from 'lucide-react';
+import { Code2, Home, Play, Eye, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
@@ -37,8 +37,12 @@ export default function Navbar() {
           <Button
             asChild variant={location.pathname === '/visualizer' ? 'default' : 'ghost'}
             size="sm" className="rounded-full gap-1.5 text-sm">
-
             <Link to="/visualizer"><Eye className="w-3.5 h-3.5" /> Visualizer</Link>
+          </Button>
+          <Button
+            asChild variant={location.pathname === '/reverse-engineer' ? 'default' : 'ghost'}
+            size="sm" className="rounded-full gap-1.5 text-sm">
+            <Link to="/reverse-engineer"><Brain className="w-3.5 h-3.5" /> Reverse</Link>
           </Button>
           <div className="ml-2 flex items-center gap-1.5 bg-secondary rounded-full px-3 py-1.5" title={`${progress}% explored`}>
             <svg width="24" height="24" className="-rotate-90">
