@@ -262,17 +262,17 @@ export default function Index() {
                 </div>
 
                 {/* Floating stat cards */}
-                <motion.div
-                  className="absolute -right-12 top-6 glass-card px-3 py-2 rounded-lg shadow-lg"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}>
+                
 
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-3.5 h-3.5 text-primary" />
-                    <span className="text-[11px] font-semibold text-foreground">8 Algorithms</span>
-                  </div>
-                </motion.div>
+
+
+
+
+
+
+
+
+
                 
 
 
