@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Playground from "./pages/Playground";
 import Visualizer from "./pages/Visualizer";
-import ReverseEngineer from "./pages/ReverseEngineer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,7 +20,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/playground" element={<Playground />} />
           <Route path="/visualizer" element={<Visualizer />} />
-          <Route path="/reverse-engineer" element={<ReverseEngineer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
