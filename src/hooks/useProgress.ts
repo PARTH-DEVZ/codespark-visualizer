@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/contexts/AuthContext';
 
 export type DSType = 'array' | 'linked-list' | 'stack' | 'queue' | 'bst' | 'graph';
 
@@ -23,16 +25,28 @@ export const OPERATIONS: Record<DSType, string[]> = {
 export const ALL_DS: DSType[] = ['array', 'linked-list', 'stack', 'queue', 'bst', 'graph'];
 
 export function useProgress() {
-  const [explored, setExplored] = useState<Record<string, string[]>>(() => {
-    try {
-      const saved = localStorage.getItem('codepilot-progress');
-      return saved ? JSON.parse(saved) : {};
-    } catch { return {}; }
-  });
+  const { user } = useAuth();
+  const [explored, setExplored] = useState<Record<string, string[]>>({});
 
+  // Load progress from DB when user is logged in
   useEffect(() => {
-    localStorage.setItem('codepilot-progress', JSON.stringify(explored));
-  }, [explored]);
+    if (!user) {
+      setExplored({});
+      return;
+    }
+    supabase.from('user_progress')
+      .select('ds_type, operation')
+      .eq('user_id', user.id)
+      .then(({ data }) => {
+        if (!data) return;
+        const map: Record<string, string[]> = {};
+        data.forEach(row => {
+          if (!map[row.ds_type]) map[row.ds_type] = [];
+          map[row.ds_type].push(row.operation);
+        });
+        setExplored(map);
+      });
+  }, [user]);
 
   const markExplored = useCallback((ds: DSType, operation: string) => {
     setExplored(prev => {
@@ -40,7 +54,13 @@ export function useProgress() {
       if (current.includes(operation)) return prev;
       return { ...prev, [ds]: [...current, operation] };
     });
-  }, []);
+
+    if (user) {
+      supabase.from('user_progress')
+        .upsert({ user_id: user.id, ds_type: ds, operation }, { onConflict: 'user_id,ds_type,operation' })
+        .then(() => {});
+    }
+  }, [user]);
 
   const getProgress = useCallback((ds: DSType) => {
     const total = OPERATIONS[ds].length;
