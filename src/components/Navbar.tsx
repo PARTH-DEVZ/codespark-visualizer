@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useProgress } from '@/hooks/useProgress';
 import { useAuth } from '@/contexts/AuthContext';
-import { Code2, Home, Play, Eye, LogIn, LogOut, User } from 'lucide-react';
+import { Code2, Home, Play, Eye, LogIn, LogOut, User, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
@@ -30,6 +30,9 @@ export default function Navbar() {
           </Button>
           <Button asChild variant={location.pathname === '/visualizer' ? 'default' : 'ghost'} size="sm" className="rounded-full gap-1.5 text-sm">
             <Link to="/visualizer"><Eye className="w-3.5 h-3.5" /> Visualizer</Link>
+          </Button>
+          <Button asChild variant={location.pathname === '/reverse-engineer' ? 'default' : 'ghost'} size="sm" className="rounded-full gap-1.5 text-sm">
+            <Link to="/reverse-engineer"><Brain className="w-3.5 h-3.5" /> AI Mode</Link>
           </Button>
 
           {user && (

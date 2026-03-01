@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Playground from "./pages/Playground";
 import Visualizer from "./pages/Visualizer";
+import ReverseEngineer from "./pages/ReverseEngineer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/visualizer" element={<Visualizer />} />
+            <Route path="/reverse-engineer" element={<ReverseEngineer />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
