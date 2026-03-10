@@ -300,8 +300,8 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why CodePilot?</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for how you actually learn</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Stop memorizing — start understanding. CodePilot transforms abstract algorithms into visual, interactive experiences.</p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for how you actually learn</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mt-3">Stop memorizing — start understanding. CodePilot transforms abstract algorithms into visual, interactive experiences.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {whyCards.map((card, i) =>
