@@ -515,7 +515,7 @@ export default function Index() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 px-6">
+      <section className="py-16 sm:py-28 px-4 sm:px-6">
         <div className="container mx-auto max-w-3xl">
           <motion.div
             className="text-center p-14 rounded-3xl gradient-primary relative overflow-hidden"
