@@ -147,7 +147,7 @@ export default function Index() {
               </motion.div>
 
               {/* Title */}
-              <h1 className="text-5xl lg:text-7xl font-black text-foreground leading-[1.05] mb-4 tracking-tight">
+              <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-foreground leading-[1.05] mb-4 tracking-tight">
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
