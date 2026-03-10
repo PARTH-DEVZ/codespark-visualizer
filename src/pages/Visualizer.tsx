@@ -242,7 +242,7 @@ export default function Visualizer() {
             ))}
           </div>
 
-          <div className="grid lg:grid-cols-[1fr_300px] gap-6">
+          <div className="grid lg:grid-cols-[1fr_280px] gap-4 sm:gap-6">
             {/* Main visualization area */}
             <div className="space-y-4">
               {/* Visualization canvas */}
