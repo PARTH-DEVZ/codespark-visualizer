@@ -98,7 +98,7 @@ export default function Index() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-36 pb-32 px-6 relative overflow-hidden">
+      <section className="pt-24 sm:pt-36 pb-16 sm:pb-32 px-4 sm:px-6 relative overflow-hidden">
         {/* Animated background layers */}
         <div className="absolute inset-0 gradient-warm opacity-60" />
         <div className="absolute top-10 right-10 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
