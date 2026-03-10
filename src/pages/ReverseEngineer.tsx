@@ -230,11 +230,11 @@ export default function ReverseEngineer() {
             AI-Powered Code Analysis
           </motion.div>
 
-          <h1 className="text-4xl lg:text-5xl font-black text-foreground leading-tight mb-4 tracking-tight">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-foreground leading-tight mb-4 tracking-tight">
             Reverse Engineering{' '}
             <span className="gradient-text">AI Mode</span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Paste any algorithm, write your analysis, and let AI evaluate your understanding.
             Get scored on comprehension, complexity accuracy, and edge case awareness.
           </p>
