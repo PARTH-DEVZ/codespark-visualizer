@@ -365,7 +365,7 @@ export default function Playground() {
             })}
           </div>
 
-          <div className="grid lg:grid-cols-[280px_1fr] gap-6">
+          <div className="grid lg:grid-cols-[280px_1fr] gap-4 sm:gap-6">
             {/* Sidebar */}
             <div className="space-y-4">
               {/* Operations */}

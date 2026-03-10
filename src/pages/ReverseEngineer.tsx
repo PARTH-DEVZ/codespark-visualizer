@@ -612,7 +612,7 @@ export default function ReverseEngineer() {
               </div>
 
               {/* Actions */}
-              <div className="flex justify-center gap-3 pt-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
                 <Button variant="outline" onClick={handleReset} className="rounded-full gap-2">
                   <RotateCcw className="w-4 h-4" /> Try Another
                 </Button>

@@ -377,7 +377,7 @@ export default function Visualizer() {
                 </div>
 
                 {/* Size & Speed sliders */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   {!isGraph && (
                     <div>
                       <label className="text-xs font-medium text-muted-foreground flex items-center gap-1 mb-1.5">
