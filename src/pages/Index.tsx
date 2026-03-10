@@ -214,7 +214,7 @@ export default function Index() {
 
             {/* Hero visual */}
             <motion.div
-              className="flex-shrink-0"
+              className="flex-shrink-0 hidden md:block"
               initial={{ opacity: 0, scale: 0.85, rotate: -2 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}>
