@@ -194,7 +194,7 @@ export default function Index() {
 
               {/* Trust badges */}
               <motion.div
-                className="flex items-center gap-5 mt-10 justify-center lg:justify-start text-sm text-muted-foreground flex-wrap"
+                className="flex items-center gap-3 sm:gap-5 mt-8 sm:mt-10 justify-center lg:justify-start text-sm text-muted-foreground flex-wrap"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5 }}>
