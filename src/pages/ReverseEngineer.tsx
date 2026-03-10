@@ -390,7 +390,7 @@ export default function ReverseEngineer() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex items-center justify-between">
+                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                   <Button variant="outline" onClick={() => setActiveStep(0)} className="rounded-full gap-2">
                     Back
                   </Button>
