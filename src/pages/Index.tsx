@@ -444,7 +444,7 @@ export default function Index() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Start learning in under 30 seconds</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">No installation, no configuration, no account needed. Just three simple steps.</p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10">
             {[
             { step: '01', icon: BookOpen, title: 'Choose Your Topic', desc: 'Pick from 6 data structures or 8 algorithms. Each comes with a dedicated, purpose-built visualization.' },
             { step: '02', icon: Code2, title: 'Run Operations', desc: 'Insert values, search, sort, traverse — trigger any operation with one click and watch it execute step-by-step.' },
