@@ -419,7 +419,7 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">By The Numbers</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for comprehensive, in-depth learning</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for comprehensive, in-depth learning</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">Covering the essential data structures and algorithms every developer needs to know.</p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
