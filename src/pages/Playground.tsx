@@ -326,7 +326,7 @@ export default function Playground() {
           </motion.div>
 
           {/* DS Selector */}
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 mb-6">
             {ALL_DS.map((ds, i) => {
               const Icon = DS_ICONS[ds];
               const p = getProgress(ds);
