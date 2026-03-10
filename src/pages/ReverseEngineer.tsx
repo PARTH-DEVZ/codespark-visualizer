@@ -567,7 +567,7 @@ export default function ReverseEngineer() {
               </div>
 
               {/* Socratic Questions + Optimization */}
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="glass-card p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <HelpCircle className="w-5 h-5 text-primary" />
