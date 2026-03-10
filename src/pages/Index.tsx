@@ -168,7 +168,7 @@ export default function Index() {
 
               {/* Subtitle */}
               <motion.p
-                className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed"
+                className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-xl leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}>
