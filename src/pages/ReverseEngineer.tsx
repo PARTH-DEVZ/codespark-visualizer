@@ -209,7 +209,7 @@ export default function ReverseEngineer() {
       <Navbar />
 
       {/* Hero header */}
-      <section className="pt-28 pb-12 px-6 relative overflow-hidden">
+      <section className="pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 gradient-warm opacity-60" />
         <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-accent/8 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
@@ -230,11 +230,11 @@ export default function ReverseEngineer() {
             AI-Powered Code Analysis
           </motion.div>
 
-          <h1 className="text-4xl lg:text-5xl font-black text-foreground leading-tight mb-4 tracking-tight">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-foreground leading-tight mb-4 tracking-tight">
             Reverse Engineering{' '}
             <span className="gradient-text">AI Mode</span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Paste any algorithm, write your analysis, and let AI evaluate your understanding.
             Get scored on comprehension, complexity accuracy, and edge case awareness.
           </p>
@@ -242,13 +242,13 @@ export default function ReverseEngineer() {
       </section>
 
       {/* Stepper */}
-      <div className="container mx-auto max-w-4xl px-6 mb-8">
-        <div className="flex items-center justify-center gap-2">
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6 mb-8">
+        <div className="flex items-center justify-center gap-1 sm:gap-2 flex-wrap">
           {steps.map((step, i) => (
             <div key={step.label} className="flex items-center gap-2">
               <motion.button
                 onClick={() => { if (i <= (evaluation ? 2 : code ? 1 : 0)) setActiveStep(i); }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
                   activeStep === i
                     ? 'bg-primary text-primary-foreground shadow-md'
                     : i < activeStep || (i === 2 && evaluation)
@@ -258,17 +258,17 @@ export default function ReverseEngineer() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <step.icon className="w-4 h-4" />
+                <step.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 {step.label}
               </motion.button>
-              {i < steps.length - 1 && <ChevronRight className="w-4 h-4 text-muted-foreground" />}
+              {i < steps.length - 1 && <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />}
             </div>
           ))}
         </div>
       </div>
 
       {/* Main content */}
-      <div className="container mx-auto max-w-5xl px-6 pb-20">
+      <div className="container mx-auto max-w-5xl px-4 sm:px-6 pb-20">
         <AnimatePresence mode="wait">
           {/* Step 0: Paste Code */}
           {activeStep === 0 && (
@@ -279,7 +279,7 @@ export default function ReverseEngineer() {
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="glass-card p-8">
+              <div className="glass-card p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
                     <Code2 className="w-5 h-5 text-primary-foreground" />
@@ -335,7 +335,7 @@ export default function ReverseEngineer() {
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="glass-card p-8">
+              <div className="glass-card p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
                     <Brain className="w-5 h-5 text-primary-foreground" />
@@ -390,7 +390,7 @@ export default function ReverseEngineer() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex items-center justify-between">
+                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                   <Button variant="outline" onClick={() => setActiveStep(0)} className="rounded-full gap-2">
                     Back
                   </Button>
@@ -427,7 +427,7 @@ export default function ReverseEngineer() {
               className="space-y-6"
             >
               {/* Overall Score Card */}
-              <div className="glass-card p-8">
+              <div className="glass-card p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
                     <Award className="w-5 h-5 text-primary-foreground" />
@@ -438,7 +438,7 @@ export default function ReverseEngineer() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-8 py-4">
+                <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 py-4">
                   {[
                     { score: evaluation.confidenceBreakdown.understanding, label: 'Understanding' },
                     { score: evaluation.confidenceBreakdown.complexityAccuracy, label: 'Complexity' },
@@ -466,7 +466,7 @@ export default function ReverseEngineer() {
               </div>
 
               {/* Code Understanding */}
-              <div className="glass-card p-8">
+              <div className="glass-card p-5 sm:p-8">
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
                     <Target className="w-5 h-5 text-primary" />
@@ -485,7 +485,7 @@ export default function ReverseEngineer() {
               </div>
 
               {/* Complexity Analysis */}
-              <div className="glass-card p-8">
+              <div className="glass-card p-5 sm:p-8">
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
                     <Timer className="w-5 h-5 text-primary" />
@@ -522,7 +522,7 @@ export default function ReverseEngineer() {
               </div>
 
               {/* Edge Cases */}
-              <div className="glass-card p-8">
+              <div className="glass-card p-5 sm:p-8">
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-primary" />
@@ -567,7 +567,7 @@ export default function ReverseEngineer() {
               </div>
 
               {/* Socratic Questions + Optimization */}
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="glass-card p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <HelpCircle className="w-5 h-5 text-primary" />
@@ -612,7 +612,7 @@ export default function ReverseEngineer() {
               </div>
 
               {/* Actions */}
-              <div className="flex justify-center gap-3 pt-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
                 <Button variant="outline" onClick={handleReset} className="rounded-full gap-2">
                   <RotateCcw className="w-4 h-4" /> Try Another
                 </Button>

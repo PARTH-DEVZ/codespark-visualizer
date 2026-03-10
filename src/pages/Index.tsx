@@ -98,12 +98,12 @@ export default function Index() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-36 pb-32 px-6 relative overflow-hidden">
+      <section className="pt-24 sm:pt-36 pb-16 sm:pb-32 px-4 sm:px-6 relative overflow-hidden">
         {/* Animated background layers */}
         <div className="absolute inset-0 gradient-warm opacity-60" />
-        <div className="absolute top-10 right-10 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/3 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px]" />
+        <div className="absolute top-10 right-10 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-10 left-10 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-accent/8 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/3 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-primary/5 rounded-full blur-[80px]" />
         
         {/* Floating decorative elements */}
         <motion.div
@@ -147,7 +147,7 @@ export default function Index() {
               </motion.div>
 
               {/* Title */}
-              <h1 className="text-5xl lg:text-7xl font-black text-foreground leading-[1.05] mb-4 tracking-tight">
+              <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-foreground leading-[1.05] mb-4 tracking-tight">
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -168,7 +168,7 @@ export default function Index() {
 
               {/* Subtitle */}
               <motion.p
-                className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed"
+                className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-xl leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}>
@@ -184,17 +184,17 @@ export default function Index() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.5 }}>
 
-                <Button asChild size="lg" className="rounded-full px-8 gap-2 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all h-13 font-semibold">
+                <Button asChild size="lg" className="rounded-full px-6 sm:px-8 gap-2 text-sm sm:text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all h-12 sm:h-13 font-semibold">
                   <Link to="/playground"><Rocket className="w-5 h-5" /> Launch Playground</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-8 gap-2 text-base border-2 hover:bg-secondary hover:scale-105 transition-all h-13 font-semibold">
+                <Button asChild variant="outline" size="lg" className="rounded-full px-6 sm:px-8 gap-2 text-sm sm:text-base border-2 hover:bg-secondary hover:scale-105 transition-all h-12 sm:h-13 font-semibold">
                   <Link to="/visualizer"><Eye className="w-5 h-5" /> Explore Algorithms</Link>
                 </Button>
               </motion.div>
 
               {/* Trust badges */}
               <motion.div
-                className="flex items-center gap-5 mt-10 justify-center lg:justify-start text-sm text-muted-foreground flex-wrap"
+                className="flex items-center gap-3 sm:gap-5 mt-8 sm:mt-10 justify-center lg:justify-start text-sm text-muted-foreground flex-wrap"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5 }}>
@@ -214,7 +214,7 @@ export default function Index() {
 
             {/* Hero visual */}
             <motion.div
-              className="flex-shrink-0"
+              className="flex-shrink-0 hidden md:block"
               initial={{ opacity: 0, scale: 0.85, rotate: -2 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}>
@@ -291,7 +291,7 @@ export default function Index() {
       </section>
 
       {/* Why CodePilot */}
-      <section className="py-20 px-6 bg-secondary/30">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 bg-secondary/30">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             className="text-center mb-14"
@@ -300,8 +300,8 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why CodePilot?</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for how you actually learn</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Stop memorizing — start understanding. CodePilot transforms abstract algorithms into visual, interactive experiences.</p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for how you actually learn</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mt-3">Stop memorizing — start understanding. CodePilot transforms abstract algorithms into visual, interactive experiences.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {whyCards.map((card, i) =>
@@ -326,7 +326,7 @@ export default function Index() {
       </section>
 
       {/* Data Structures Grid */}
-      <section className="py-24 px-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             className="text-center mb-14"
@@ -335,8 +335,8 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Data Structures</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">6 Core Structures, Fully Interactive</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Each structure comes with dedicated operations, SVG/HTML animations, real-time output logs, and time complexity analysis for every operation.</p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">6 Core Structures, Fully Interactive</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mt-3">Each structure comes with dedicated operations, SVG/HTML animations, real-time output logs, and time complexity analysis for every operation.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {dsCards.map((ds, i) =>
@@ -368,7 +368,7 @@ export default function Index() {
       </section>
 
       {/* Features */}
-      <section className="py-24 px-6 bg-secondary/30">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-secondary/30">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             className="text-center mb-14"
@@ -377,10 +377,10 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Platform Features</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Everything you need to master DSA</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Everything you need to master DSA</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Three powerful tools designed to take you from confused to confident.</p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
             {features.map((f, i) =>
             <motion.div
               key={f.title}
@@ -410,7 +410,7 @@ export default function Index() {
       </section>
 
       {/* Stats */}
-      <section className="py-24 px-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             className="text-center mb-14"
@@ -419,7 +419,7 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">By The Numbers</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for comprehensive, in-depth learning</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Built for comprehensive, in-depth learning</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">Covering the essential data structures and algorithms every developer needs to know.</p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
@@ -432,7 +432,7 @@ export default function Index() {
       </section>
 
       {/* How it works */}
-      <section className="py-24 px-6 bg-secondary/30">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-secondary/30">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             className="text-center mb-14"
@@ -441,10 +441,10 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Getting Started</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Start learning in under 30 seconds</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Start learning in under 30 seconds</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">No installation, no configuration, no account needed. Just three simple steps.</p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10">
             {[
             { step: '01', icon: BookOpen, title: 'Choose Your Topic', desc: 'Pick from 6 data structures or 8 algorithms. Each comes with a dedicated, purpose-built visualization.' },
             { step: '02', icon: Code2, title: 'Run Operations', desc: 'Insert values, search, sort, traverse — trigger any operation with one click and watch it execute step-by-step.' },
@@ -471,7 +471,7 @@ export default function Index() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 px-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             className="text-center mb-14"
@@ -480,10 +480,10 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Community</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Loved by students & engineers worldwide</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Loved by students & engineers worldwide</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">Join thousands of developers who use CodePilot to level up their DSA skills.</p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
             {testimonials.map((t, i) =>
             <motion.div
               key={i}
@@ -515,10 +515,10 @@ export default function Index() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 px-6">
+      <section className="py-16 sm:py-28 px-4 sm:px-6">
         <div className="container mx-auto max-w-3xl">
           <motion.div
-            className="text-center p-14 rounded-3xl gradient-primary relative overflow-hidden"
+            className="text-center p-8 sm:p-14 rounded-2xl sm:rounded-3xl gradient-primary relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}>
@@ -526,7 +526,7 @@ export default function Index() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.15),transparent)]" />
             <div className="relative">
               <GraduationCap className="w-10 h-10 text-primary-foreground/80 mx-auto mb-5" />
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">Ready to decode algorithms?</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">Ready to decode algorithms?</h2>
               <p className="text-primary-foreground/80 mb-8 text-lg max-w-md mx-auto leading-relaxed">
                 Jump into the playground and start building intuition for data structures today. No sign-up, no paywall — just pure learning.
               </p>
@@ -543,7 +543,7 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-border">
+      <footer className="py-8 sm:py-12 px-4 sm:px-6 border-t border-border">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <Code2 className="w-4 h-4 text-primary" />

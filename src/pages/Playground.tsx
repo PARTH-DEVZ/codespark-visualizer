@@ -306,7 +306,7 @@ export default function Playground() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="pt-20 px-4 pb-8">
+      <div className="pt-20 px-3 sm:px-4 pb-8">
         <div className="container mx-auto max-w-7xl">
           {/* Page Header */}
           <motion.div
@@ -326,7 +326,7 @@ export default function Playground() {
           </motion.div>
 
           {/* DS Selector */}
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 mb-6">
             {ALL_DS.map((ds, i) => {
               const Icon = DS_ICONS[ds];
               const p = getProgress(ds);
@@ -334,7 +334,7 @@ export default function Playground() {
                 <motion.button
                   key={ds}
                   onClick={() => { setSelectedDS(ds); setHighlighted([]); }}
-                  className={`relative p-4 rounded-xl border-2 transition-all text-left group ${
+                  className={`relative p-3 sm:p-4 rounded-xl border-2 transition-all text-left group ${
                     selectedDS === ds
                       ? 'border-primary bg-primary/5 shadow-lg shadow-primary/10'
                       : 'border-border bg-card hover:border-primary/30 hover:shadow-md'
@@ -365,7 +365,7 @@ export default function Playground() {
             })}
           </div>
 
-          <div className="grid lg:grid-cols-[280px_1fr] gap-6">
+          <div className="grid lg:grid-cols-[280px_1fr] gap-4 sm:gap-6">
             {/* Sidebar */}
             <div className="space-y-4">
               {/* Operations */}

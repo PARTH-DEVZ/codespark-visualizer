@@ -183,7 +183,7 @@ export default function Visualizer() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="pt-20 px-4 pb-8">
+      <div className="pt-20 px-3 sm:px-4 pb-8">
         <div className="container mx-auto max-w-7xl">
           {/* Header */}
           <motion.div
@@ -242,7 +242,7 @@ export default function Visualizer() {
             ))}
           </div>
 
-          <div className="grid lg:grid-cols-[1fr_300px] gap-6">
+          <div className="grid lg:grid-cols-[1fr_280px] gap-4 sm:gap-6">
             {/* Main visualization area */}
             <div className="space-y-4">
               {/* Visualization canvas */}
@@ -377,7 +377,7 @@ export default function Visualizer() {
                 </div>
 
                 {/* Size & Speed sliders */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   {!isGraph && (
                     <div>
                       <label className="text-xs font-medium text-muted-foreground flex items-center gap-1 mb-1.5">
