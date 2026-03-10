@@ -526,7 +526,7 @@ export default function Index() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.15),transparent)]" />
             <div className="relative">
               <GraduationCap className="w-10 h-10 text-primary-foreground/80 mx-auto mb-5" />
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">Ready to decode algorithms?</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">Ready to decode algorithms?</h2>
               <p className="text-primary-foreground/80 mb-8 text-lg max-w-md mx-auto leading-relaxed">
                 Jump into the playground and start building intuition for data structures today. No sign-up, no paywall — just pure learning.
               </p>
