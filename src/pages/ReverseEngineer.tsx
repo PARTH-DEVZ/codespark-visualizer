@@ -258,7 +258,7 @@ export default function ReverseEngineer() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <step.icon className="w-4 h-4" />
+                <step.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 {step.label}
               </motion.button>
               {i < steps.length - 1 && <ChevronRight className="w-4 h-4 text-muted-foreground" />}
