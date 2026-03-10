@@ -438,7 +438,7 @@ export default function ReverseEngineer() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-8 py-4">
+                <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 py-4">
                   {[
                     { score: evaluation.confidenceBreakdown.understanding, label: 'Understanding' },
                     { score: evaluation.confidenceBreakdown.complexityAccuracy, label: 'Complexity' },
