@@ -183,7 +183,7 @@ export default function Visualizer() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="pt-20 px-4 pb-8">
+      <div className="pt-20 px-3 sm:px-4 pb-8">
         <div className="container mx-auto max-w-7xl">
           {/* Header */}
           <motion.div
