@@ -543,7 +543,7 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-border">
+      <footer className="py-8 sm:py-12 px-4 sm:px-6 border-t border-border">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <Code2 className="w-4 h-4 text-primary" />
