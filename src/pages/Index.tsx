@@ -518,7 +518,7 @@ export default function Index() {
       <section className="py-16 sm:py-28 px-4 sm:px-6">
         <div className="container mx-auto max-w-3xl">
           <motion.div
-            className="text-center p-14 rounded-3xl gradient-primary relative overflow-hidden"
+            className="text-center p-8 sm:p-14 rounded-2xl sm:rounded-3xl gradient-primary relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}>
