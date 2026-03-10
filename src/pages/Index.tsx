@@ -483,7 +483,7 @@ export default function Index() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Loved by students & engineers worldwide</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">Join thousands of developers who use CodePilot to level up their DSA skills.</p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
             {testimonials.map((t, i) =>
             <motion.div
               key={i}
