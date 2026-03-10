@@ -209,7 +209,7 @@ export default function ReverseEngineer() {
       <Navbar />
 
       {/* Hero header */}
-      <section className="pt-28 pb-12 px-6 relative overflow-hidden">
+      <section className="pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 gradient-warm opacity-60" />
         <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-accent/8 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
