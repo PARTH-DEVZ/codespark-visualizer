@@ -130,14 +130,8 @@ Edge Cases: ${analysis.edgeCases || "Not provided"}`;
           { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
-      if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ error: "AI credits exhausted. Please add credits in Settings." }),
-          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
       const t = await response.text();
-      console.error("AI gateway error:", response.status, t);
+      console.error("Gemini API error:", response.status, t);
       return new Response(
         JSON.stringify({ error: "AI evaluation failed" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -145,20 +139,19 @@ Edge Cases: ${analysis.edgeCases || "Not provided"}`;
     }
 
     const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
+    const content = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (!content) {
-      throw new Error("No response from AI");
+      throw new Error("No response from Gemini");
     }
 
     // Parse the JSON from the AI response
     let evaluation;
     try {
-      // Try to extract JSON from the response (handle potential markdown wrapping)
       const jsonMatch = content.match(/\{[\s\S]*\}/);
       evaluation = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(content);
     } catch {
-      console.error("Failed to parse AI response:", content);
+      console.error("Failed to parse Gemini response:", content);
       return new Response(
         JSON.stringify({ error: "Failed to parse AI evaluation. Please try again." }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
