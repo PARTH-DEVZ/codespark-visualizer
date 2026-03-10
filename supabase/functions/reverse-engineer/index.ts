@@ -83,9 +83,9 @@ serve(async (req) => {
       );
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+    const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
+    if (!GEMINI_API_KEY) {
+      throw new Error("GEMINI_API_KEY is not configured");
     }
 
     const userMessage = `## Code to Analyze:
@@ -102,19 +102,23 @@ Space Complexity: ${analysis.spaceComplexity || "Not provided"}
 Edge Cases: ${analysis.edgeCases || "Not provided"}`;
 
     const response = await fetch(
-      "https://ai.gateway.lovable.dev/v1/chat/completions",
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "google/gemini-3-flash-preview",
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            { role: "user", content: userMessage },
+          contents: [
+            {
+              role: "user",
+              parts: [{ text: SYSTEM_PROMPT + "\n\n" + userMessage }],
+            },
           ],
+          generationConfig: {
+            temperature: 0.7,
+            responseMimeType: "application/json",
+          },
         }),
       }
     );
