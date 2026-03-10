@@ -377,7 +377,7 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Platform Features</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Everything you need to master DSA</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Everything you need to master DSA</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Three powerful tools designed to take you from confused to confident.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
