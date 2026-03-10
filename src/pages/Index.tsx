@@ -432,7 +432,7 @@ export default function Index() {
       </section>
 
       {/* How it works */}
-      <section className="py-24 px-6 bg-secondary/30">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-secondary/30">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             className="text-center mb-14"
