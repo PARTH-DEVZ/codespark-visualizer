@@ -261,7 +261,7 @@ export default function ReverseEngineer() {
                 <step.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 {step.label}
               </motion.button>
-              {i < steps.length - 1 && <ChevronRight className="w-4 h-4 text-muted-foreground" />}
+              {i < steps.length - 1 && <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />}
             </div>
           ))}
         </div>
