@@ -291,7 +291,7 @@ export default function Index() {
       </section>
 
       {/* Why CodePilot */}
-      <section className="py-20 px-6 bg-secondary/30">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 bg-secondary/30">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             className="text-center mb-14"
