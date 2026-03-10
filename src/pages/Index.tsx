@@ -184,10 +184,10 @@ export default function Index() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.5 }}>
 
-                <Button asChild size="lg" className="rounded-full px-8 gap-2 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all h-13 font-semibold">
+                <Button asChild size="lg" className="rounded-full px-6 sm:px-8 gap-2 text-sm sm:text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all h-12 sm:h-13 font-semibold">
                   <Link to="/playground"><Rocket className="w-5 h-5" /> Launch Playground</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-8 gap-2 text-base border-2 hover:bg-secondary hover:scale-105 transition-all h-13 font-semibold">
+                <Button asChild variant="outline" size="lg" className="rounded-full px-6 sm:px-8 gap-2 text-sm sm:text-base border-2 hover:bg-secondary hover:scale-105 transition-all h-12 sm:h-13 font-semibold">
                   <Link to="/visualizer"><Eye className="w-5 h-5" /> Explore Algorithms</Link>
                 </Button>
               </motion.div>
