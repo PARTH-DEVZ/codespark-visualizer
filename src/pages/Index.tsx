@@ -101,9 +101,9 @@ export default function Index() {
       <section className="pt-24 sm:pt-36 pb-16 sm:pb-32 px-4 sm:px-6 relative overflow-hidden">
         {/* Animated background layers */}
         <div className="absolute inset-0 gradient-warm opacity-60" />
-        <div className="absolute top-10 right-10 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/3 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px]" />
+        <div className="absolute top-10 right-10 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-primary/8 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-10 left-10 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-accent/8 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/3 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-primary/5 rounded-full blur-[80px]" />
         
         {/* Floating decorative elements */}
         <motion.div
