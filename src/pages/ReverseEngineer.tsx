@@ -242,8 +242,8 @@ export default function ReverseEngineer() {
       </section>
 
       {/* Stepper */}
-      <div className="container mx-auto max-w-4xl px-6 mb-8">
-        <div className="flex items-center justify-center gap-2">
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6 mb-8">
+        <div className="flex items-center justify-center gap-1 sm:gap-2 flex-wrap">
           {steps.map((step, i) => (
             <div key={step.label} className="flex items-center gap-2">
               <motion.button
