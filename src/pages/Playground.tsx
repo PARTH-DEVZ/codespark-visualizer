@@ -334,7 +334,7 @@ export default function Playground() {
                 <motion.button
                   key={ds}
                   onClick={() => { setSelectedDS(ds); setHighlighted([]); }}
-                  className={`relative p-4 rounded-xl border-2 transition-all text-left group ${
+                  className={`relative p-3 sm:p-4 rounded-xl border-2 transition-all text-left group ${
                     selectedDS === ds
                       ? 'border-primary bg-primary/5 shadow-lg shadow-primary/10'
                       : 'border-border bg-card hover:border-primary/30 hover:shadow-md'
