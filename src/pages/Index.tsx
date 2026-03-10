@@ -441,7 +441,7 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Getting Started</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">Start learning in under 30 seconds</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">Start learning in under 30 seconds</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mt-3">No installation, no configuration, no account needed. Just three simple steps.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-10">
