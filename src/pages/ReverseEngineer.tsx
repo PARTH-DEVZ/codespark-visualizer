@@ -268,7 +268,7 @@ export default function ReverseEngineer() {
       </div>
 
       {/* Main content */}
-      <div className="container mx-auto max-w-5xl px-6 pb-20">
+      <div className="container mx-auto max-w-5xl px-4 sm:px-6 pb-20">
         <AnimatePresence mode="wait">
           {/* Step 0: Paste Code */}
           {activeStep === 0 && (
