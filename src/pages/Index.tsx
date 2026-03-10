@@ -335,8 +335,8 @@ export default function Index() {
             viewport={{ once: true }}>
 
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Data Structures</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-2 text-foreground">6 Core Structures, Fully Interactive</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-3">Each structure comes with dedicated operations, SVG/HTML animations, real-time output logs, and time complexity analysis for every operation.</p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-foreground">6 Core Structures, Fully Interactive</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mt-3">Each structure comes with dedicated operations, SVG/HTML animations, real-time output logs, and time complexity analysis for every operation.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {dsCards.map((ds, i) =>
