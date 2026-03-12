@@ -9,16 +9,16 @@ const corsHeaders = {
 const SYSTEM_PROMPT = `You are an expert computer science tutor specializing in reverse engineering code understanding. Your role is to evaluate a student's analysis of a given code snippet/algorithm.
 
 You will receive:
-1. A code snippet (the algorithm/code being analyzed)
-2. The student's analysis containing their understanding of:
+1. A code snippet
+2. The student's analysis containing:
    - Problem statement
    - Input and output
    - Algorithm purpose
    - Time complexity
    - Space complexity
-   - Edge cases they identified
+   - Edge cases
 
-Your job is to evaluate their analysis and return a JSON response with this EXACT structure:
+Return ONLY JSON in this exact structure:
 
 {
   "codeUnderstanding": {
@@ -35,17 +35,14 @@ Your job is to evaluate their analysis and return a JSON response with this EXAC
   },
   "edgeCaseDetection": {
     "score": <0-100>,
-    "identified": ["<list of edge cases student found>"],
-    "missed": ["<list of edge cases student missed>"],
+    "identified": ["<list>"],
+    "missed": ["<list>"],
     "feedback": "<string>"
   },
-  "socraticQuestions": [
-    "<question 1>",
-    "<question 2>"
-  ],
+  "socraticQuestions": ["<question1>", "<question2>"],
   "optimizationChallenge": {
-    "challenge": "<string - a specific optimization challenge>",
-    "hint": "<string - a subtle hint without giving the answer>"
+    "challenge": "<string>",
+    "hint": "<string>"
   },
   "overallScore": <0-100>,
   "confidenceBreakdown": {
@@ -54,19 +51,16 @@ Your job is to evaluate their analysis and return a JSON response with this EXAC
     "edgeCaseAwareness": <0-100>,
     "overall": <0-100>
   },
-  "feedback": "<2-3 sentences of encouraging but critical feedback. Be supportive, academic, slightly challenging. NEVER reveal the full answer directly.>"
+  "feedback": "<2-3 sentences>"
 }
 
-IMPORTANT RULES:
-- Be supportive but academically rigorous
+Rules:
+- Be supportive but rigorous
 - Never reveal full solutions
-- Give guiding hints, not answers
-- If the student is mostly correct, challenge them to optimize
-- If incorrect, guide them with Socratic questioning
-- Always provide at least 2 Socratic questions
-- Score fairly - partial credit for partial understanding
-- Edge cases to check for: empty input, single element, negative values, duplicates, boundary conditions, very large inputs
-- ONLY return valid JSON, no markdown, no explanation outside the JSON`;
+- Give hints only
+- Always ask 2 Socratic questions
+- Score fairly
+- Only return valid JSON`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -83,17 +77,16 @@ serve(async (req) => {
       );
     }
 
-    const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
-    if (!GEMINI_API_KEY) {
-      throw new Error("GEMINI_API_KEY is not configured");
+    const GROQ_API_KEY = Deno.env.get("GROQ_API_KEY");
+
+    if (!GROQ_API_KEY) {
+      throw new Error("GROQ_API_KEY is not configured");
     }
 
-    const userMessage = `## Code to Analyze:
-\`\`\`
+    const userMessage = `## Code to Analyze
 ${code}
-\`\`\`
 
-## Student's Analysis:
+## Student Analysis
 Problem Statement: ${analysis.problemStatement || "Not provided"}
 Input/Output: ${analysis.inputOutput || "Not provided"}
 Algorithm Purpose: ${analysis.algorithmPurpose || "Not provided"}
@@ -101,37 +94,34 @@ Time Complexity: ${analysis.timeComplexity || "Not provided"}
 Space Complexity: ${analysis.spaceComplexity || "Not provided"}
 Edge Cases: ${analysis.edgeCases || "Not provided"}`;
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: SYSTEM_PROMPT + "\n\n" + userMessage }],
-            },
-          ],
-          generationConfig: {
-            temperature: 0.7,
-            responseMimeType: "application/json",
-          },
-        }),
-      }
-    );
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "llama-3.1-70b-versatile",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: userMessage },
+        ],
+        temperature: 0.7,
+        max_tokens: 1500,
+      }),
+    });
 
     if (!response.ok) {
+      const t = await response.text();
+      console.error("Groq API error:", response.status, t);
+
       if (response.status === 429) {
         return new Response(
-          JSON.stringify({ error: "Rate limit exceeded. Please try again in a moment." }),
+          JSON.stringify({ error: "Rate limit exceeded. Please try again." }),
           { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
-      const t = await response.text();
-      console.error("Gemini API error:", response.status, t);
+
       return new Response(
         JSON.stringify({ error: "AI evaluation failed" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -139,19 +129,20 @@ Edge Cases: ${analysis.edgeCases || "Not provided"}`;
     }
 
     const data = await response.json();
-    const content = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    const content = data.choices?.[0]?.message?.content;
 
     if (!content) {
-      throw new Error("No response from Gemini");
+      throw new Error("No response from Groq");
     }
 
-    // Parse the JSON from the AI response
     let evaluation;
+
     try {
       const jsonMatch = content.match(/\{[\s\S]*\}/);
       evaluation = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(content);
     } catch {
-      console.error("Failed to parse Gemini response:", content);
+      console.error("Failed to parse AI response:", content);
+
       return new Response(
         JSON.stringify({ error: "Failed to parse AI evaluation. Please try again." }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -163,6 +154,7 @@ Edge Cases: ${analysis.edgeCases || "Not provided"}`;
     });
   } catch (e) {
     console.error("reverse-engineer error:", e);
+
     return new Response(
       JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
